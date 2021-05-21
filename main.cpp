@@ -6,22 +6,22 @@ int mudaMsg(string* m1, char s1, char s2, string* m2, int tam){
 
   int troca = 0;
   string m = *m1;
-  string novom = "";
+  string novom = *m2;
+  tam--;
   
-  if(tam == 0){
-   
-  }else{
+  if(tam >= 0){
 
     if(m[tam] == s1){
-      novom += s2; 
+      novom[tam] = s2; 
       troca++;
     }else{
-      novom += m[tam];
+      novom[tam] = m[tam];
     }
-    
+
+    *m2 = novom;
+    troca += mudaMsg(m1, s1, s2, m2, tam);
   }
   
-
   return troca;
 }
 
@@ -36,7 +36,8 @@ int main() {
   cin >> substituir;
   cout << "Digite um caractere a ser colocado no lugar do anterior: " << endl;
   cin >> substituto;
-  
+
+  novaMsg = msg;
   int trocas = mudaMsg(&msg, substituir, substituto, &novaMsg, msg.length());
  
   cout << "\n"+novaMsg+"\n";
