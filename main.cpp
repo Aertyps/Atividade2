@@ -14,8 +14,6 @@ int mudaMsg(string* m1, char s1, char s2, string* m2, int tam){
     if(m[tam] == s1){
       novom[tam] = s2; 
       troca++;
-    }else{
-      novom[tam] = m[tam];
     }
 
     *m2 = novom;
